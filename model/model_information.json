@@ -1,0 +1,62 @@
+{
+    "model_name": "Logistic Regression",
+    "target_column": "OrderStatus",
+    "feature_columns": [
+        "Product",
+        "Quantity",
+        "UnitPrice",
+        "PaymentMethod",
+        "ItemsInCart",
+        "CouponCode",
+        "ReferralSource",
+        "TotalPrice"
+    ],
+    "categorical_columns": [
+        "Product",
+        "PaymentMethod",
+        "CouponCode",
+        "ReferralSource"
+    ],
+    "numerical_columns": [
+        "Quantity",
+        "UnitPrice",
+        "ItemsInCart",
+        "TotalPrice"
+    ],
+    "classes": [
+        "Cancelled",
+        "Delivered",
+        "Pending",
+        "Returned",
+        "Shipped"
+    ],
+    "product_options": [
+        "Chair",
+        "Desk",
+        "Laptop",
+        "Monitor",
+        "Phone",
+        "Printer",
+        "Tablet"
+    ],
+    "payment_method_options": [
+        "Cash",
+        "Credit Card",
+        "Debit Card",
+        "Gift Card",
+        "Online"
+    ],
+    "coupon_code_options": [
+        "FREESHIP",
+        "No Coupon",
+        "SAVE10",
+        "WINTER15"
+    ],
+    "referral_source_options": [
+        "Email",
+        "Facebook",
+        "Google",
+        "Instagram",
+        "Referral"
+    ]
+}

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Order Status Predictor</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         PAGE BACKGROUND SHAPES
+    ====================================================== -->
+
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+    <div class="background-shape shape-three"></div>
+
+
+    <!-- =====================================================
+         MAIN PAGE WRAPPER
+    ====================================================== -->
+
+    <main class="page-wrapper">
+
+
+        <!-- =================================================
+             LEFT INFORMATION SECTION
+        ================================================== -->
+
+        <section class="hero-section">
+
+            <div class="brand-badge">
+                <i class="fa-solid fa-brain"></i>
+                DecodeLabs AI Project 2
+            </div>
+
+            <h1>
+                AI Order Status
+                <span>Prediction System</span>
+            </h1>
+
+            <p class="hero-description">
+                Enter the order details below and let the trained
+                supervised learning model predict the most likely
+                order status.
+            </p>
+
+            <div class="feature-list">
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div>
+                        <h3>Data-Based Prediction</h3>
+                        <p>
+                            Prediction is generated using patterns
+                            learned from the provided order dataset.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+
+                    <div>
+                        <h3>Supervised Learning</h3>
+                        <p>
+                            The model was trained and tested using
+                            labeled order-status data.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+                        <h3>Automatic Calculation</h3>
+                        <p>
+                            Total price is automatically calculated
+                            from quantity and unit price.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="model-badge">
+
+                <span class="model-dot"></span>
+
+                <div>
+                    <small>Currently loaded model</small>
+                    <strong>{{ model_name }}</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ORDER PREDICTION FORM
+        ================================================== -->
+
+        <section class="form-section">
+
+            <div class="form-card">
+
+                <div class="form-header">
+
+                    <div class="form-header-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+
+                    <div>
+                        <h2>Predict Order Status</h2>
+                        <p>
+                            Fill in all required order information.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Error message from Flask -->
+
+                {% if error_message %}
+
+                    <div class="alert alert-error">
+
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                        <span>{{ error_message }}</span>
+
+                    </div>
+
+                {% endif %}
+
+
+                <form
+                    id="predictionForm"
+                    action="{{ url_for('predict') }}"
+                    method="POST"
+                >
+
+
+                    <!-- =====================================
+                         PRODUCT
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="Product">
+                            <i class="fa-solid fa-box-open"></i>
+                            Product
+                        </label>
+
+                        <select
+                            id="Product"
+                            name="Product"
+                            required
+                        >
+
+                            <option value="" selected disabled>
+                                Select a product
+                            </option>
+
+                            {% for product in product_options %}
+
+                                <option value="{{ product }}">
+                                    {{ product }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         QUANTITY AND UNIT PRICE
+                    ====================================== -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="Quantity">
+                                <i class="fa-solid fa-layer-group"></i>
+                                Quantity
+                            </label>
+
+                            <input
+                                type="number"
+                                id="Quantity"
+                                name="Quantity"
+                                min="1"
+                                step="1"
+                                placeholder="Enter quantity"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="UnitPrice">
+                                <i class="fa-solid fa-tag"></i>
+                                Unit Price
+                            </label>
+
+                            <div class="input-with-prefix">
+
+                                <span class="input-prefix">
+                                    $
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="UnitPrice"
+                                    name="UnitPrice"
+                                    min="0.01"
+                                    step="0.01"
+                                    placeholder="Enter unit price"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         PAYMENT METHOD
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="PaymentMethod">
+                            <i class="fa-solid fa-credit-card"></i>
+                            Payment Method
+                        </label>
+
+                        <select
+                            id="PaymentMethod"
+                            name="PaymentMethod"
+                            required
+                        >
+
+                            <option value="" selected disabled>
+                                Select payment method
+                            </option>
+
+                            {% for payment_method in payment_method_options %}
+
+                                <option value="{{ payment_method }}">
+                                    {{ payment_method }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         ITEMS IN CART AND COUPON
+                    ====================================== -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="ItemsInCart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Items in Cart
+                            </label>
+
+                            <input
+                                type="number"
+                                id="ItemsInCart"
+                                name="ItemsInCart"
+                                min="1"
+                                step="1"
+                                placeholder="Enter cart items"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="CouponCode">
+                                <i class="fa-solid fa-ticket"></i>
+                                Coupon Code
+                            </label>
+
+                            <select
+                                id="CouponCode"
+                                name="CouponCode"
+                                required
+                            >
+
+                                {% for coupon_code in coupon_code_options %}
+
+                                    <option
+                                        value="{{ coupon_code }}"
+                                        {% if coupon_code == "No Coupon" %}
+                                            selected
+                                        {% endif %}
+                                    >
+                                        {{ coupon_code }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         REFERRAL SOURCE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="ReferralSource">
+                            <i class="fa-solid fa-share-nodes"></i>
+                            Referral Source
+                        </label>
+
+                        <select
+                            id="ReferralSource"
+                            name="ReferralSource"
+                            required
+                        >
+
+                            <option value="" selected disabled>
+                                Select referral source
+                            </option>
+
+                            {% for referral_source in referral_source_options %}
+
+                                <option value="{{ referral_source }}">
+                                    {{ referral_source }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         AUTOMATIC TOTAL PRICE
+                    ====================================== -->
+
+                    <div class="total-price-card">
+
+                        <div class="total-price-left">
+
+                            <span class="total-label">
+                                Estimated Total Price
+                            </span>
+
+                            <small>
+                                Quantity × Unit Price
+                            </small>
+
+                        </div>
+
+                        <div class="total-price-value">
+
+                            <span>$</span>
+
+                            <strong id="TotalPriceDisplay">
+                                0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         SUBMIT BUTTON
+                    ====================================== -->
+
+                    <button
+                        type="submit"
+                        class="predict-button"
+                        id="predictButton"
+                    >
+
+                        <span class="button-text">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            Predict Order Status
+                        </span>
+
+                        <span class="button-loader">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            Processing...
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <p class="form-note">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    This prediction is generated by a trained machine
+                    learning model and is intended for educational use.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            Project 2 — Data Classification Using AI
+        </p>
+
+        <span>
+            Built with Python, Flask and Scikit-learn
+        </span>
+
+    </footer>
+
+
+    <!-- Custom JavaScript -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+</html>

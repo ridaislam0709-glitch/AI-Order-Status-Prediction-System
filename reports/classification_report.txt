@@ -1,0 +1,13 @@
+Best Model: Logistic Regression
+
+              precision    recall  f1-score   support
+
+   Cancelled       0.22      0.16      0.18        50
+   Delivered       0.22      0.28      0.25        46
+     Pending       0.22      0.21      0.22        47
+    Returned       0.25      0.30      0.27        50
+     Shipped       0.13      0.11      0.12        47
+
+    accuracy                           0.21       240
+   macro avg       0.21      0.21      0.21       240
+weighted avg       0.21      0.21      0.21       240

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Prediction Result</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <style>
+
+        .result-page-wrapper{
+            width:92%;
+            max-width:1000px;
+            min-height:100vh;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:50px 0;
+        }
+
+        .result-card{
+            width:100%;
+            background:rgba(255,255,255,.97);
+            color:#0f172a;
+            border-radius:30px;
+            padding:40px;
+            box-shadow:0 30px 80px rgba(0,0,0,.35);
+            animation:fadeUp .7s ease both;
+        }
+
+        .result-header{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .result-icon{
+            width:85px;
+            height:85px;
+            margin:0 auto 18px;
+            border-radius:24px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            color:#ffffff;
+            font-size:36px;
+            box-shadow:0 15px 35px rgba(37,99,235,.30);
+        }
+
+        .result-header h1{
+            font-size:34px;
+            margin-bottom:8px;
+        }
+
+        .result-header p{
+            color:#64748b;
+        }
+
+        .prediction-box{
+            background:linear-gradient(135deg,#eff6ff,#f5f3ff);
+            border:1px solid #dbeafe;
+            border-radius:22px;
+            padding:28px;
+            text-align:center;
+            margin-bottom:28px;
+        }
+
+        .prediction-label{
+            display:block;
+            font-size:14px;
+            color:#64748b;
+            margin-bottom:8px;
+        }
+
+        .prediction-status{
+            font-size:38px;
+            font-weight:800;
+            color:#2563eb;
+            text-transform:capitalize;
+        }
+
+        .confidence-box{
+            margin-top:15px;
+            color:#334155;
+            font-size:15px;
+        }
+
+        .details-title{
+            font-size:21px;
+            margin-bottom:18px;
+        }
+
+        .details-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:16px;
+        }
+
+        .detail-item{
+            padding:16px;
+            background:#f8fafc;
+            border:1px solid #e2e8f0;
+            border-radius:15px;
+        }
+
+        .detail-item span{
+            display:block;
+            color:#64748b;
+            font-size:12px;
+            margin-bottom:5px;
+        }
+
+        .detail-item strong{
+            color:#0f172a;
+            font-size:15px;
+            word-break:break-word;
+        }
+
+        .model-information{
+            margin-top:22px;
+            padding:16px;
+            border-radius:15px;
+            background:#ecfdf5;
+            border:1px solid #bbf7d0;
+            color:#166534;
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .result-actions{
+            display:flex;
+            gap:15px;
+            margin-top:28px;
+        }
+
+        .result-button{
+            flex:1;
+            min-height:54px;
+            border:none;
+            border-radius:15px;
+            text-decoration:none;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:9px;
+            font-weight:700;
+            font-family:'Poppins',sans-serif;
+            cursor:pointer;
+            transition:.25s ease;
+        }
+
+        .primary-button{
+            color:#ffffff;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            box-shadow:0 12px 28px rgba(37,99,235,.28);
+        }
+
+        .secondary-button{
+            color:#1e293b;
+            background:#f1f5f9;
+            border:1px solid #cbd5e1;
+        }
+
+        .result-button:hover{
+            transform:translateY(-2px);
+        }
+
+        @media (max-width:700px){
+
+            .result-card{
+                padding:25px 18px;
+            }
+
+            .result-header h1{
+                font-size:27px;
+            }
+
+            .prediction-status{
+                font-size:30px;
+            }
+
+            .details-grid{
+                grid-template-columns:1fr;
+            }
+
+            .result-actions{
+                flex-direction:column;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Background shapes -->
+
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+    <div class="background-shape shape-three"></div>
+
+
+    <main class="result-page-wrapper">
+
+        <section class="result-card">
+
+            <!-- Result heading -->
+
+            <div class="result-header">
+
+                <div class="result-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <h1>Prediction Completed</h1>
+
+                <p>
+                    The trained classification model has analyzed
+                    the entered order information.
+                </p>
+
+            </div>
+
+
+            <!-- Main prediction -->
+
+            <div class="prediction-box">
+
+                <span class="prediction-label">
+                    Predicted Order Status
+                </span>
+
+                <div class="prediction-status">
+                    {{ predicted_status }}
+                </div>
+
+                {% if confidence is not none %}
+
+                    <div class="confidence-box">
+
+                        <i class="fa-solid fa-chart-pie"></i>
+
+                        Prediction Confidence:
+
+                        <strong>
+                            {{ confidence }}%
+                        </strong>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- Entered information -->
+
+            <h2 class="details-title">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Order Details
+            </h2>
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+                    <span>Product</span>
+                    <strong>{{ product }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Quantity</span>
+                    <strong>{{ quantity }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Unit Price</span>
+                    <strong>${{ "%.2f"|format(unit_price) }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Total Price</span>
+                    <strong>${{ "%.2f"|format(total_price) }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Payment Method</span>
+                    <strong>{{ payment_method }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Items in Cart</span>
+                    <strong>{{ items_in_cart }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Coupon Code</span>
+                    <strong>{{ coupon_code }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Referral Source</span>
+                    <strong>{{ referral_source }}</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Model used -->
+
+            <div class="model-information">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <div>
+                    Prediction generated using:
+                    <strong>{{ model_name }}</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="result-actions">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="result-button primary-button"
+                >
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Make Another Prediction
+                </a>
+
+                <button
+                    type="button"
+                    class="result-button secondary-button"
+                    onclick="window.print()"
+                >
+                    <i class="fa-solid fa-print"></i>
+                    Print Result
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

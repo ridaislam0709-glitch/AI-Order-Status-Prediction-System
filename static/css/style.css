@@ -1,0 +1,941 @@
+/* =====================================================
+   GOOGLE FONT
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#0f172a,#1e293b,#312e81);
+
+    color:#ffffff;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+
+/* =====================================================
+   BACKGROUND SHAPES
+===================================================== */
+
+.background-shape{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(100px);
+
+    opacity:.30;
+
+    z-index:-1;
+
+}
+
+.shape-one{
+
+    width:350px;
+
+    height:350px;
+
+    background:#3b82f6;
+
+    top:-80px;
+
+    left:-80px;
+
+}
+
+.shape-two{
+
+    width:280px;
+
+    height:280px;
+
+    background:#06b6d4;
+
+    right:-80px;
+
+    top:220px;
+
+}
+
+.shape-three{
+
+    width:250px;
+
+    height:250px;
+
+    background:#8b5cf6;
+
+    bottom:-60px;
+
+    left:35%;
+
+}
+
+
+/* =====================================================
+   MAIN WRAPPER
+===================================================== */
+
+.page-wrapper{
+
+    width:95%;
+
+    max-width:1450px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+    padding:60px 0;
+
+}
+
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+
+.brand-badge{
+
+    width:fit-content;
+
+    padding:12px 22px;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    border-radius:40px;
+
+    backdrop-filter:blur(15px);
+
+    margin-bottom:30px;
+
+    font-weight:600;
+
+}
+
+
+.brand-badge i{
+
+    margin-right:8px;
+
+    color:#38bdf8;
+
+}
+
+
+.hero-section h1{
+
+    font-size:58px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+
+    font-weight:800;
+
+}
+
+
+.hero-section h1 span{
+
+    color:#38bdf8;
+
+    display:block;
+
+}
+
+
+.hero-description{
+
+    color:#d6d6d6;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.feature-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+.feature-item{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+
+.feature-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:15px;
+
+    background:#38bdf8;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:22px;
+
+    flex-shrink:0;
+
+}
+
+
+.feature-item h3{
+
+    margin-bottom:8px;
+
+    font-size:20px;
+
+}
+
+
+.feature-item p{
+
+    color:#cfcfcf;
+
+    line-height:1.7;
+
+}
+
+
+/* =====================================================
+   MODEL BADGE
+===================================================== */
+
+.model-badge{
+
+    margin-top:45px;
+
+    background:rgba(255,255,255,.10);
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    backdrop-filter:blur(15px);
+
+}
+
+
+.model-dot{
+
+    width:16px;
+
+    height:16px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+}
+/* =====================================================
+   FORM SECTION
+===================================================== */
+
+.form-section{
+    width:100%;
+}
+
+
+.form-card{
+    width:100%;
+    background:rgba(255,255,255,.96);
+    color:#0f172a;
+    border-radius:30px;
+    padding:35px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.45);
+}
+
+
+/* =====================================================
+   FORM HEADER
+===================================================== */
+
+.form-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:28px;
+}
+
+
+.form-header-icon{
+    width:58px;
+    height:58px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#ffffff;
+    font-size:22px;
+    box-shadow:0 12px 30px rgba(37,99,235,.28);
+    flex-shrink:0;
+}
+
+
+.form-header h2{
+    font-size:28px;
+    margin-bottom:5px;
+    color:#0f172a;
+}
+
+
+.form-header p{
+    color:#64748b;
+    font-size:14px;
+}
+
+
+/* =====================================================
+   ALERT MESSAGE
+===================================================== */
+
+.alert{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:14px;
+    margin-bottom:22px;
+    font-size:14px;
+    font-weight:500;
+}
+
+
+.alert-error{
+    background:#fee2e2;
+    color:#991b1b;
+    border:1px solid #fecaca;
+}
+
+
+/* =====================================================
+   FORM LAYOUT
+===================================================== */
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+
+.form-group{
+    margin-bottom:20px;
+}
+
+
+.form-group label{
+    display:block;
+    margin-bottom:9px;
+    font-size:14px;
+    font-weight:600;
+    color:#1e293b;
+}
+
+
+.form-group label i{
+    margin-right:7px;
+    color:#2563eb;
+}
+
+
+/* =====================================================
+   INPUTS AND SELECTS
+===================================================== */
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:52px;
+    border:1px solid #cbd5e1;
+    border-radius:14px;
+    padding:0 15px;
+    background:#f8fafc;
+    color:#0f172a;
+    font-size:15px;
+    font-family:'Poppins',sans-serif;
+    outline:none;
+    transition:.25s ease;
+}
+
+
+.form-group input::placeholder{
+    color:#94a3b8;
+}
+
+
+.form-group input:hover,
+.form-group select:hover{
+    border-color:#94a3b8;
+}
+
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#2563eb;
+    background:#ffffff;
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+}
+
+
+.form-group select{
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   PRICE INPUT PREFIX
+===================================================== */
+
+.input-with-prefix{
+    position:relative;
+}
+
+
+.input-prefix{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#475569;
+    font-size:15px;
+    font-weight:600;
+    z-index:2;
+}
+
+
+.input-with-prefix input{
+    padding-left:34px;
+}
+
+
+/* =====================================================
+   TOTAL PRICE CARD
+===================================================== */
+
+.total-price-card{
+    margin-top:5px;
+    margin-bottom:24px;
+    padding:20px 22px;
+    border-radius:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    background:linear-gradient(135deg,#eff6ff,#f5f3ff);
+    border:1px solid #dbeafe;
+}
+
+
+.total-price-left{
+    display:flex;
+    flex-direction:column;
+}
+
+
+.total-label{
+    font-size:15px;
+    font-weight:700;
+    color:#1e293b;
+    margin-bottom:4px;
+}
+
+
+.total-price-left small{
+    color:#64748b;
+    font-size:12px;
+}
+
+
+.total-price-value{
+    display:flex;
+    align-items:baseline;
+    gap:4px;
+    color:#2563eb;
+}
+
+
+.total-price-value span{
+    font-size:20px;
+    font-weight:700;
+}
+
+
+.total-price-value strong{
+    font-size:30px;
+    line-height:1;
+}
+
+
+/* =====================================================
+   PREDICT BUTTON
+===================================================== */
+
+.predict-button{
+    width:100%;
+    height:56px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#ffffff;
+    font-size:16px;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 14px 30px rgba(37,99,235,.30);
+    transition:.25s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+
+.predict-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 38px rgba(37,99,235,.38);
+}
+
+
+.predict-button:active{
+    transform:translateY(0);
+}
+
+
+.predict-button:disabled{
+    cursor:not-allowed;
+    opacity:.75;
+}
+
+
+.button-text,
+.button-loader{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+}
+
+
+.button-loader{
+    display:none;
+}
+
+
+.predict-button.loading .button-text{
+    display:none;
+}
+
+
+.predict-button.loading .button-loader{
+    display:flex;
+}
+
+
+/* =====================================================
+   FORM NOTE
+===================================================== */
+
+.form-note{
+    margin-top:18px;
+    text-align:center;
+    color:#64748b;
+    font-size:12px;
+    line-height:1.7;
+}
+
+
+.form-note i{
+    margin-right:6px;
+    color:#2563eb;
+}
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    width:95%;
+    max-width:1450px;
+    margin:0 auto;
+    padding:0 0 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+
+.footer p{
+    font-weight:600;
+}
+
+
+.footer span{
+    color:#94a3b8;
+}
+
+
+/* =====================================================
+   SIMPLE ANIMATIONS
+===================================================== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(24px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes pulseDot{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(34,197,94,.55);
+    }
+
+    70%{
+        box-shadow:0 0 0 10px rgba(34,197,94,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(34,197,94,0);
+    }
+
+}
+
+
+.hero-section{
+    animation:fadeUp .7s ease both;
+}
+
+
+.form-card{
+    animation:fadeUp .85s ease both;
+}
+
+
+.model-dot{
+    animation:pulseDot 2s infinite;
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+
+::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+
+::-webkit-scrollbar-thumb{
+    background:#475569;
+    border-radius:10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover{
+    background:#64748b;
+}
+
+
+/* =====================================================
+   TABLET RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width:1100px){
+
+    .page-wrapper{
+        grid-template-columns:1fr;
+        gap:45px;
+        padding:45px 0;
+    }
+
+
+    .hero-section{
+        text-align:center;
+        align-items:center;
+    }
+
+
+    .hero-description{
+        max-width:760px;
+    }
+
+
+    .feature-list{
+        width:100%;
+        max-width:760px;
+        text-align:left;
+    }
+
+
+    .model-badge{
+        width:100%;
+        max-width:760px;
+        justify-content:center;
+    }
+
+
+    .form-section{
+        max-width:800px;
+        margin:auto;
+    }
+
+
+    .footer{
+        max-width:800px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width:700px){
+
+    .page-wrapper{
+        width:92%;
+        padding:30px 0;
+    }
+
+
+    .brand-badge{
+        font-size:13px;
+        padding:10px 16px;
+        margin-bottom:22px;
+    }
+
+
+    .hero-section h1{
+        font-size:40px;
+    }
+
+
+    .hero-description{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+
+    .feature-item{
+        gap:14px;
+    }
+
+
+    .feature-icon{
+        width:50px;
+        height:50px;
+        font-size:18px;
+        border-radius:13px;
+    }
+
+
+    .feature-item h3{
+        font-size:17px;
+    }
+
+
+    .feature-item p{
+        font-size:13px;
+    }
+
+
+    .form-card{
+        padding:24px 18px;
+        border-radius:22px;
+    }
+
+
+    .form-header{
+        align-items:flex-start;
+    }
+
+
+    .form-header-icon{
+        width:50px;
+        height:50px;
+        font-size:18px;
+    }
+
+
+    .form-header h2{
+        font-size:22px;
+    }
+
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+
+    .total-price-card{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+
+    .total-price-value strong{
+        font-size:26px;
+    }
+
+
+    .footer{
+        width:92%;
+        flex-direction:column;
+        text-align:center;
+        padding-bottom:24px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE DEVICES
+===================================================== */
+
+@media (max-width:420px){
+
+    .hero-section h1{
+        font-size:33px;
+    }
+
+
+    .brand-badge{
+        font-size:11px;
+    }
+
+
+    .form-card{
+        padding:20px 15px;
+    }
+
+
+    .form-header{
+        gap:12px;
+    }
+
+
+    .form-header h2{
+        font-size:20px;
+    }
+
+
+    .form-header p{
+        font-size:12px;
+    }
+
+
+    .form-group input,
+    .form-group select{
+        height:50px;
+        font-size:14px;
+    }
+
+
+    .predict-button{
+        height:54px;
+        font-size:14px;
+    }
+
+}
